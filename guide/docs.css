@@ -1,4 +1,5 @@
-/* User guide - same palette as the popup; system fonts so it works fully offline */
+/* User guide - same palette as the popup; bundled/system fonts so it works fully offline */
+@font-face { font-family: "Bricolage Grotesque"; src: url("../fonts/BricolageGrotesque-800.woff2") format("woff2"); font-weight: 800; font-display: block; }
 :root {
   --bg: #fff;
   --surface: #fafafa;
@@ -47,8 +48,12 @@ a:hover { text-decoration: underline; }
 /* header */
 .top { background: var(--header); color: #fff; }
 .top-inner { max-width: 1040px; margin: 0 auto; padding: 18px 24px; display: flex; align-items: center; gap: 12px; }
-.logo { width: 34px; height: 34px; flex: none; border-radius: 9px; background: #2563eb; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 15px; }
-.title h1 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; }
+/* logo (brand/: 1a "stamp", on-dark variant) */
+.logo { width: 36px; height: 36px; flex: none; }
+.logo svg { width: 100%; height: 100%; display: block; }
+.logo .bf-shadow { fill: #fff4ea; }
+.title h1 { margin: 0; font-family: "Bricolage Grotesque", "Arial Black", sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.03em; line-height: 1.15; color: #fff4ea; }
+.title h1 .fill { color: #ff4d12; }
 .sub { font-size: 13px; color: #a1a1aa; }
 .version { margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: rgba(255,255,255,.1); font-size: 11px; }
 .version:empty { display: none; }
@@ -110,7 +115,7 @@ td:first-child { white-space: nowrap; }
 .btn.small { background: var(--surface); color: var(--text-2); border: 1px solid var(--border); }
 .qmark, .logo-inline { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 6px; font-size: 12px; font-weight: 700; vertical-align: 1px; }
 .qmark { background: #18181b; color: #fff; border-radius: 50%; }
-.logo-inline { background: #2563eb; color: #fff; }
+.logo-inline { background: #ff4d12; color: #fff; }
 
 footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
 

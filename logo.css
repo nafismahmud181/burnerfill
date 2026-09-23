@@ -1,0 +1,29 @@
+/* BurnerFill logo component (1a "stamp").
+   <a class="bf-logo" style="--bf-size:40px"> <svg>...mark...</svg> <span class="bf-word">Burner<span class="bf-fill">Fill</span></span> </a>
+   Proportions follow lockup.svg: wordmark 0.58x the mark height, 0.2x gap.
+   Needs Bricolage Grotesque 800 loaded by the page (falls back like lockup.svg does). */
+.bf-logo {
+  --bf-size: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--bf-size) * 0.2);
+  color: #1a0f0a;
+  text-decoration: none;
+  line-height: 1;
+}
+.bf-logo svg { width: var(--bf-size); height: var(--bf-size); flex: none; display: block; }
+.bf-logo .bf-shadow { fill: #1a0f0a; }
+.bf-word {
+  font-family: "Bricolage Grotesque", "Arial Black", sans-serif;
+  font-weight: 800;
+  font-size: calc(var(--bf-size) * 0.58);
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+.bf-fill { color: #ff4d12; }
+
+/* on dark backgrounds: light offset shadow and light "Burner" */
+.bf-logo--dark { color: #fff4ea; }
+.bf-logo--dark .bf-shadow { fill: #fff4ea; }
+
+.bf-logo--mark-only .bf-word { display: none; }
