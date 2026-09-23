@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BurnerFill · Privacy policy</title>
+  <meta name="description" content="What the BurnerFill browser extension stores, what it sends, and to whom.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff4d12'/%3E%3Ctext x='32' y='46' font-family='Arial,sans-serif' font-size='40' font-weight='800' text-anchor='middle' fill='white'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page { max-width: 760px; margin: 0 auto; padding: 24px 24px 96px; }
+    .top { display: flex; align-items: center; gap: 10px; padding: 12px 0 40px; color: #1a0f0a; }
+    .logo { width: 34px; height: 34px; border-radius: 10px; background: #ff4d12; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px; box-shadow: 3px 3px 0 #1a0f0a; }
+    .brand { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.02em; }
+    h1 { margin: 0 0 8px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(36px, 6vw, 56px); line-height: 1; letter-spacing: -.035em; }
+    .updated { color: #8a7a70; font-size: 14px; margin-bottom: 32px; }
+    .summary { background: #7c5cff; color: #fff; border: 2px solid #1a0f0a; border-radius: 20px; padding: 22px 26px; box-shadow: 6px 6px 0 #1a0f0a; font-size: 17px; line-height: 1.55; margin-bottom: 40px; }
+    h2 { margin: 40px 0 10px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -.01em; }
+    p, li { font-size: 16px; line-height: 1.65; color: #4a3b33; }
+    ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    strong { color: #1a0f0a; }
+    code { font-family: 'Geist Mono', ui-monospace, monospace; font-size: .9em; background: #fff; border: 1px solid #e5d8cc; border-radius: 5px; padding: 1px 6px; }
+    .back { display: inline-block; margin-top: 48px; font-weight: 600; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <a class="top" href="./"><span class="logo">B</span><span class="brand">BurnerFill</span></a>
+
+  <h1>Privacy policy</h1>
+  <div class="updated">Last updated: September 24, 2026 · applies to the BurnerFill browser extension</div>
+
+  <div class="summary">
+    BurnerFill has no account, no server of its own, no analytics and no ads. Everything it keeps is stored
+    in your browser on your device. The only outside service it talks to is <strong style="color:#fff">tempmail.lol</strong>,
+    to create disposable inboxes and read the mail that arrives in them.
+  </div>
+
+  <h2>What is stored on your device</h2>
+  <p>In the browser's local extension storage, which is not synced to other devices:</p>
+  <ul>
+    <li><strong>Settings</strong>: your on/off choices, the off-screen style, and the optional tempmail.lol API token if you enter one.</li>
+    <li><strong>The current signup on each tab</strong>: the temporary address, the generated password, the inbox token, and the most recent emails received in that inbox, including any verification code or link found in them.</li>
+    <li><strong>History</strong>: each account you create, with its temporary address, password, the website address, the date and whether it was verified. Passwords are stored unencrypted so you can look them up and export them.</li>
+    <li><strong>A debug log</strong>: the last 400 technical events from signups and inbox checks. Events from web pages are recorded only on signup and verification-code pages. It may include temporary addresses and short previews of received emails. It never leaves your device unless you copy it yourself.</li>
+  </ul>
+  <p>You can delete the history at any time with <strong>Clear</strong> in the extension's History tab. Removing the extension deletes everything it stored.</p>
+
+  <h2>What is sent, and to whom</h2>
+  <p>BurnerFill sends requests to exactly one service, <code>api.tempmail.lol</code>:</p>
+  <ul>
+    <li>a request to <strong>create a new temporary inbox</strong>, and</li>
+    <li>repeated requests to <strong>read the messages in that inbox</strong>, identified by the inbox's own token, until a code arrives or 12 minutes pass.</li>
+  </ul>
+  <p>These requests contain no information about you: not your real email address, not the website you're signing up to,
+    not the password, and not the content of any page. The emails in a temporary inbox are held by tempmail.lol and are
+    subject to <a href="https://tempmail.lol">tempmail.lol</a>'s own terms. Temporary inboxes are not private, so don't use them for anything sensitive.</p>
+  <p>No data is sold, shared with anyone else, or used for advertising, and nothing is collected by the developer.</p>
+
+  <h2>Web pages</h2>
+  <p>To recognise signup forms, BurnerFill's content script runs on the pages you visit. It only acts on pages that look like
+    a signup or verification-code form, where it fills in the temporary address, password and code. Page content is never
+    stored beyond the debug log described above, and never sent anywhere.</p>
+
+  <h2>Clipboard</h2>
+  <p>If <strong>Copy OTP to clipboard</strong> is on (the default), BurnerFill writes each verification code to your clipboard when it arrives.
+    It never reads your clipboard.</p>
+
+  <h2>Turning it off</h2>
+  <p>A new install starts switched off. While the power button in the popup is off, BurnerFill detects nothing, fills nothing,
+    and makes no requests to tempmail.lol.</p>
+
+  <h2>This website</h2>
+  <p>This page and the BurnerFill website are static files. They load fonts from Google Fonts and browser logos from jsDelivr,
+    which receive the usual request information from your browser (such as your IP address) when you visit. The extension itself does neither.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the new version will be published on this page with a new date.</p>
+
+  <a class="back" href="./">← Back to BurnerFill</a>
+</div>
+</body>
+</html>

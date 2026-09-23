@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BurnerFill — Help</title>
+  <link rel="stylesheet" href="docs.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff4d12'/%3E%3Ctext x='32' y='46' font-family='Arial,sans-serif' font-size='40' font-weight='800' text-anchor='middle' fill='white'%3EB%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="logo">B</div>
+      <div class="title">
+        <h1>BurnerFill</h1>
+        <span class="sub">User guide <span id="version" class="version">v1.0.0</span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Contents">
+      <a href="#getting-started">Getting started</a>
+      <a href="#how-it-works">How a signup works</a>
+      <a href="#codes-and-links">Codes &amp; links</a>
+      <a href="#manual">Manual controls</a>
+      <a href="#popup">The popup</a>
+      <a href="#settings">Settings</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#privacy">Privacy &amp; data</a>
+    </nav>
+
+    <main>
+      <p class="lead">Fills signup forms with a disposable email address and a strong password, then
+        watches that inbox and fills in the verification code when it arrives, without you leaving the page.</p>
+
+      <div class="callout warn">
+        <strong>Use it for throwaway accounts only.</strong> Temporary inboxes expire. If you ever need to reset the
+        password or prove you own the account, you won't be able to receive that email.
+      </div>
+
+      <!-- ============================================================ -->
+      <section id="getting-started">
+        <h2>Getting started</h2>
+        <ol class="steps">
+          <li><strong>Pin the extension.</strong> Click the extensions (puzzle-piece) icon in your browser's toolbar and pin
+            <em>BurnerFill</em>, so you can see its badge.</li>
+          <li><strong>Turn it on.</strong> The extension starts <strong>switched off</strong>, so nothing happens until
+            you say so. Click its icon: you'll see the off screen. Turn it on there (with the default
+            <em>Blackout</em> style, press and hold the power button until the ring fills).</li>
+          <li><strong>Check automatic filling.</strong> The pill in the top-right should read
+            <span class="pill on">● Auto on</span>. Click it to switch automatic filling off or on. It saves instantly.</li>
+          <li><strong>Open any signup page.</strong> The extension detects the form, creates a temp inbox and fills
+            the email and password fields for you.</li>
+          <li><strong>Submit the form</strong> as usual. When the site emails a code, it's filled in automatically.</li>
+        </ol>
+        <div class="callout tip">
+          After installing or updating the extension, <strong>reload any signup page that was already open</strong>.
+          Pages opened before the extension loaded don't have it running yet.
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="how-it-works">
+        <h2>How a signup works</h2>
+        <div class="flow">
+          <div><b>1</b><span>Signup form detected</span></div>
+          <div><b>2</b><span>Temp inbox created</span></div>
+          <div><b>3</b><span>Email &amp; password filled</span></div>
+          <div><b>4</b><span>Inbox watched</span></div>
+          <div><b>5</b><span>Code filled in</span></div>
+        </div>
+
+        <h3>Detecting a signup page</h3>
+        <p>A page counts as a signup when enough of these point that way: the address contains words like
+          <code>signup</code>, <code>register</code> or <code>join</code>; there are two password fields; there's an
+          email field; the form says "Sign up", "Create account" or similar. Login pages ("Forgot password",
+          "Remember me") are skipped.</p>
+
+        <h3>What gets filled</h3>
+        <ul>
+          <li><strong>Email</strong>: a fresh address from tempmail.lol.</li>
+          <li><strong>Password</strong>: 16 random characters (letters, digits and symbols, with look-alikes like
+            <code>0</code>/<code>O</code> and <code>1</code>/<code>l</code> left out).</li>
+          <li><strong>Repeat password</strong>: the same password, in confirm fields.</li>
+        </ul>
+        <p>Fields that already have something typed in are left alone.</p>
+
+        <h3>Watching the inbox</h3>
+        <p>Checking starts the moment the address is created, before you even submit the form:</p>
+        <table>
+          <tr><th>When</th><th>How often</th></tr>
+          <tr><td>First 25 seconds</td><td>Every 5 seconds, since most codes arrive quickly</td></tr>
+          <tr><td>After that</td><td>Every 30 seconds</td></tr>
+          <tr><td>After 12 minutes</td><td>Stops, and the session is marked <em>Timed out</em></td></tr>
+        </table>
+
+        <h3>Multi-step signups</h3>
+        <p>If the site moves you to another page, say from <code>/register</code> to <code>/register/verify</code>, the
+          extension keeps using <strong>the same inbox</strong> as long as you're on the same site and the code hasn't
+          arrived yet. A new address is only created for a new signup.</p>
+
+        <h3>The toolbar badge</h3>
+        <table>
+          <tr><th>Badge</th><th>Meaning</th></tr>
+          <tr><td><span class="badge blue">●</span></td><td>Temp inbox created, waiting for mail</td></tr>
+          <tr><td><span class="badge green">✓</span></td><td>Code received</td></tr>
+          <tr><td><span class="badge green">↗</span></td><td>Verification link received</td></tr>
+          <tr><td><span class="badge none"></span></td><td>No badge: nothing running on this tab, or it timed out</td></tr>
+        </table>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="codes-and-links">
+        <h2>Codes &amp; verification links</h2>
+
+        <h3>Verification codes</h3>
+        <p>When an email arrives, the extension looks for a code next to words like "code", "OTP", "PIN" or
+          "verification", or otherwise any 6-digit number. It reads the plain-text version of the email first, which
+          also handles emails that show each digit in its own box.</p>
+        <p>The code is then:</p>
+        <ul>
+          <li><strong>filled in</strong> on the page, into a single code field or a row of one-digit boxes,</li>
+          <li><strong>copied to your clipboard</strong> (you can turn this off), so you can paste it where filling
+            didn't reach,</li>
+          <li>shown in the popup with a <strong>Copy</strong> button.</li>
+        </ul>
+
+        <h3>Verification links</h3>
+        <p>Some sites send a "click to confirm your email" link instead of a code. When one arrives, the popup shows
+          an <span class="btn green">Open verification link</span> button, with the site's address on it so you can
+          see where it goes. You can also have these links open automatically in a new tab (see
+          <a href="#settings">Settings</a>).</p>
+        <p>Finding a link doesn't stop the inbox check. If the site sends a code afterwards, it's still picked up.</p>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="manual">
+        <h2>Manual controls</h2>
+        <p>Automatic detection doesn't catch every site. These always work:</p>
+
+        <h3>Generate a new email &amp; password</h3>
+        <p>Press <kbd data-shortcut>Alt+Shift+E</kbd> on the page, or click
+          <span class="btn">Generate new email &amp; password</span> in the popup. You get a brand-new address and
+          password, filled into the page (replacing whatever was there), and the new inbox is watched.
+          The old address is abandoned.</p>
+        <p>To use a different key, <a href="#" data-open="chrome://extensions/shortcuts">change the shortcut</a>.
+          If another extension already uses <kbd>Alt+Shift+E</kbd>, the browser leaves ours unset, and the popup then shows
+          <em>not set</em>.</p>
+
+        <h3>Right-click to fill</h3>
+        <p>Right-click any text field and choose <strong>BurnerFill</strong>, then:</p>
+        <ul>
+          <li><strong>Fill temp email</strong>: creates an inbox first if this tab doesn't have one,</li>
+          <li><strong>Fill password</strong>: the password that goes with that email,</li>
+          <li><strong>Fill OTP code</strong>: once the code has arrived.</li>
+        </ul>
+        <p>Fields inside embedded frames (for example some sign-in boxes provided by another company) can't be filled this way.</p>
+
+        <h3>Check now</h3>
+        <p>In the popup, <span class="btn small">Check now</span> checks the inbox straight away. It also restarts
+          checking if it stopped or timed out.</p>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="popup">
+        <h2>The popup</h2>
+        <p>Click the extension's icon. The <span class="qmark">?</span> button in the top-right opens this guide.</p>
+
+        <h3>Power button</h3>
+        <p>The <span class="qmark power-dot">⏻</span> button next to the Auto pill switches the whole extension off:
+          nothing is detected or filled, the right-click menu disappears, the shortcut does nothing, and inbox checks
+          pause. The toolbar badge shows <span class="badge gray">off</span>. The 12-minute limit keeps running, and
+          checks pick up where they left off when you switch back on.</p>
+        <p>While it's off, the popup shows an off screen with the control to turn it back on. Choose its style on the
+          <strong>Power</strong> tab: <em>Blackout</em> (press and hold), <em>Wall switch</em> (flip it) or
+          <em>Shutter</em> (one press).</p>
+        <div class="callout tip">
+          <strong>Power vs. the Auto pill:</strong> <span class="pill on">● Auto on</span> only controls
+          <em>automatic</em> filling. With it off, the Generate button, the shortcut and right-click still work.
+          The power button stops everything.
+        </div>
+
+        <h3>Session</h3>
+        <p>Everything about the signup on the current tab: its status, the email and password (with
+          <strong>Copy</strong> buttons), the code once it arrives, and the <strong>Inbox</strong>, which lists every
+          email received, newest first. Click an email to read it.</p>
+        <p>The status pill reads <em>Waiting for OTP</em>, <em>Verified</em>, <em>Timed out</em> or
+          <em>Not checking</em>. The line underneath tells you what the last inbox check found. See
+          <a href="#troubleshooting">Troubleshooting</a> for what each one means.</p>
+
+        <h3>Settings</h3>
+        <p>The options described in <a href="#settings">Settings</a>.</p>
+
+        <h3>History</h3>
+        <p>Every account created, newest first, with its password and status
+          (<em>pending</em>, <em>verified</em> or <em>timeout</em>).
+          <strong>Export CSV</strong> saves them as a spreadsheet (address, password, website, date, status);
+          <strong>Clear</strong> deletes the list.</p>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="settings">
+        <h2>Settings</h2>
+        <div class="callout tip">
+          Changes on the Settings tab take effect when you click <strong>Save settings</strong>.
+          The <span class="pill on">● Auto on</span> pill at the top is the exception: it saves the moment you click it.
+        </div>
+        <table>
+          <tr><th>Setting</th><th>Default</th><th>What it does</th></tr>
+          <tr><td><span class="pill on">● Auto on</span> pill</td><td>On</td><td>Creates an inbox and fills the form automatically on signup pages. When it's off, use the shortcut, the Generate button or right-click instead.</td></tr>
+          <tr><td>Fill email</td><td>On</td><td>Puts the temp address into email fields.</td></tr>
+          <tr><td>Fill password</td><td>On</td><td>Puts the generated password into password fields.</td></tr>
+          <tr><td>Fill repeat password</td><td>On</td><td>Also fills "confirm password" fields.</td></tr>
+          <tr><td>Auto-submit after OTP</td><td>Off</td><td>Submits the form once the code is filled in. Leave it off on pages with several buttons near the code field, because it may press the wrong one.</td></tr>
+          <tr><td>Open verification links automatically</td><td>Off</td><td>Opens an emailed confirmation link in a new tab as soon as it arrives.</td></tr>
+          <tr><td>Copy OTP to clipboard</td><td>On</td><td>Copies each code as it arrives. This replaces whatever was on your clipboard.</td></tr>
+          <tr><td>API token</td><td>Empty</td><td>Optional tempmail.lol API key. Leave it empty to use the free service; the label shows which one is in use.</td></tr>
+        </table>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+
+        <h3>The code never arrives</h3>
+        <p>Open the popup on that tab and read the line under the password:</p>
+        <table>
+          <tr><th>It says</th><th>What's going on</th><th>Try</th></tr>
+          <tr><td><code>Checked 12s ago · 0 emails</code> and it stays at 0</td>
+            <td>Checking works, but nothing has arrived. Some sites refuse or quietly drop mail to temporary addresses.</td>
+            <td>Wait a minute, use the site's "resend code" link, or generate a new address.</td></tr>
+          <tr><td>An email in the Inbox, but no code tag</td>
+            <td>Mail arrived, but no code was recognised in it.</td>
+            <td>Open the email in the Inbox and copy the code yourself.</td></tr>
+          <tr><td><code>Last check failed: …</code></td>
+            <td>The request to tempmail.lol failed; the text says why. A <code>429</code> means too many checks, and it recovers by itself.</td>
+            <td>Check your internet connection, then press <em>Check now</em>.</td></tr>
+          <tr><td><code>Inbox is not being checked.</code></td>
+            <td>Checking stopped.</td>
+            <td>Press <em>Check now</em> to restart it.</td></tr>
+          <tr><td><code>Stopped after 12 min with no code.</code></td>
+            <td>The 12-minute limit was reached.</td>
+            <td>Press <em>Check now</em> to look again, or start over with a new address.</td></tr>
+        </table>
+        <p>Also make sure the address the site says it sent the code to matches the one in the popup. If you
+          generated a new address after submitting the form, the code went to the old one.</p>
+
+        <h3>The form wasn't filled</h3>
+        <ul>
+          <li>Reload the page. It may have been open before the extension was installed or updated.</li>
+          <li>Make sure the extension isn't switched off: the badge would say <span class="badge gray">off</span> and the
+            popup would show the off screen.</li>
+          <li>Check the <span class="pill on">● Auto on</span> pill is on, and that <em>Fill email</em> / <em>Fill password</em> are on.</li>
+          <li>Use right-click → <strong>Fill temp email</strong>, or press <kbd data-shortcut>Alt+Shift+E</kbd>.</li>
+        </ul>
+
+        <h3>The site says the email isn't allowed</h3>
+        <p>Some sites block temporary email services. Press <kbd data-shortcut>Alt+Shift+E</kbd> to try a different
+          address. If the site blocks them all, it can't be used with temp mail.</p>
+
+        <h3>The shortcut does nothing</h3>
+        <p>Another extension probably uses the same keys. <a href="#" data-open="chrome://extensions/shortcuts">Open the
+          shortcuts page</a> and pick another combination for <em>BurnerFill</em>.</p>
+
+        <h3 id="debug-log">Sending a debug log</h3>
+        <p>If you report a problem, a debug log shows exactly what happened:</p>
+        <ol class="steps">
+          <li>Open the popup and <strong>Shift + click the blue <span class="logo-inline">B</span> logo</strong>. A hidden
+            <em>Debug</em> tab appears.</li>
+          <li>Click <strong>Clear</strong>, then repeat the signup that went wrong.</li>
+          <li>Back in the Debug tab, click <strong>Copy log</strong> and paste it into your report.</li>
+        </ol>
+        <p>The log only records signup and code pages, and keeps the last 400 lines. It contains the temp addresses
+          and email previews, so share it only with someone you trust.</p>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="privacy">
+        <h2>Privacy &amp; data</h2>
+        <ul>
+          <li><strong>Everything stays on this computer.</strong> Sessions, history and the debug log are kept in
+            the browser's local storage for this extension. Nothing is synced or uploaded.</li>
+          <li><strong>The only outside service is tempmail.lol</strong>, which creates the addresses and holds the
+            incoming mail. Like any public temp-mail service, it isn't private, so don't expect confidentiality.</li>
+          <li><strong>Passwords are saved in plain text</strong> in History, so you can look them up and export them.
+            Anyone using this browser profile can see them. Use <strong>Clear</strong> in History to delete them.</li>
+          <li><strong>The extension reads pages to find forms.</strong> It runs on every site so it can spot signup
+            forms, but it only acts on signup and code pages, and it never sends page content anywhere.</li>
+        </ul>
+      </section>
+
+      <footer>BurnerFill <span class="version-copy">v1.0.0</span> · This guide ships with the extension and works offline.</footer>
+    </main>
+  </div>
+
+  <script src="docs.js"></script>
+</body>
+</html>

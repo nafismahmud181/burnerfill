@@ -1,0 +1,31 @@
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #fff4ea; color: #1a0f0a; font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+a { color: #ff4d12; text-decoration: none; }
+a:hover { color: #d93a04; }
+img { max-width: 100%; }
+
+/* hover states */
+.h1:hover{background:#ff4d12 !important;color:#fff !important}
+.h2:hover{transform:translate(-2px,-2px) !important;box-shadow:6px 6px 0 #1a0f0a !important;color:#fff !important}
+.h3:hover{transform:translate(-2px,-2px) !important;box-shadow:6px 6px 0 #1a0f0a !important;color:#1a0f0a !important}
+.h4:hover{color:#ff4d12 !important}
+.h5:hover{transform:translate(-2px,-2px) !important;box-shadow:7px 7px 0 #fff4ea !important;color:#fff !important}
+.h6:hover{transform:translate(-2px,-2px) !important;box-shadow:7px 7px 0 #fff4ea !important;color:#fff !important}
+.h7:hover{transform:translate(-2px,-2px) !important;box-shadow:5px 5px 0 #1a0f0a !important;color:#fff !important}
+.h8:hover{background:#fff4ea !important}
+.h9:hover{background:#fff4ea !important}
+.h10:hover{background:#fff4ea !important}
+.h11:hover{background:#fff4ea !important}
+.h12:hover{background:#fff4ea !important}
+.h13:hover{background:#fff4ea !important}
+.h14:hover{color:#fff !important}
+.h15:hover{color:#fff !important}
+.h16:hover{color:#fff !important}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* store buttons before the listings go live (see LINKS in script.js) */
+a[aria-disabled="true"] { pointer-events: none; }
