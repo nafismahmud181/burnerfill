@@ -3,7 +3,7 @@
 // and the Contact link is hidden. Paste the real URLs here - nothing else to edit.
 const LINKS = {
   firefox: "",   // in review - once public: https://addons.mozilla.org/firefox/addon/burnerfill/
-  edge: "",      // e.g. https://microsoftedge.microsoft.com/addons/detail/<id Microsoft assigns>
+  edge: "https://microsoftedge.microsoft.com/addons/detail/bligfeiplfmfcjipbehcbddifdahomod",
   contact: "https://github.com/nafismahmud181/burnerfill/issues",
 };
 
