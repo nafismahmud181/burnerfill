@@ -2,7 +2,7 @@
 // Empty = not published yet: store buttons say "Coming soon" and don't navigate,
 // and the Contact link is hidden. Paste the real URLs here - nothing else to edit.
 const LINKS = {
-  firefox: "https://addons.mozilla.org/firefox/addon/burnerfill/",
+  firefox: "",   // in review - once public: https://addons.mozilla.org/firefox/addon/burnerfill/
   edge: "",      // e.g. https://microsoftedge.microsoft.com/addons/detail/<id Microsoft assigns>
   contact: "https://github.com/nafismahmud181/burnerfill/issues",
 };
